@@ -1,0 +1,45 @@
+#include <string>
+
+class Person {
+public:
+  // Constructor
+  Person(int age, const std::string& firstname, const std::string& lastname)
+    : age_(age), firstname_(firstname), lastname_(lastname) {}
+
+  // Member methods
+  void getValues(int& age, std::string& firstname, std::string& lastname) const {
+    age = age_;
+    firstname = firstname_;
+    lastname = lastname_;
+  }
+  void setValues(int age, const std::string& firstname, const std::string& lastname) {
+    age_ = age;
+    firstname_ = firstname;
+    lastname_ = lastname;
+  }
+
+protected:
+  // Data members
+  int age_;
+  std::string firstname_;
+  std::string lastname_;
+};
+
+class Student : public Person {
+public:
+  // Constructor
+  Student(int age, const std::string& firstname, const std::string& lastname,
+          const std::string& institution, int year, const std::string& reg_no)
+    : Person(age, firstname, lastname),
+      institution_(institution), year_(year), reg_no_(reg_no) {}
+
+  // Data members
+  std::string institution_;
+  int year_;
+  std::string reg_no_;
+};
+
+
+
+
+In the above code, the Person class has three data members: age_, firstname_, and lastname_, as well as two member methods getValues and setValues to access and modify the values of these data members. The Student class inherits from Person and adds three additional data members: institution_, year_, and reg_no_. The Student constructor also calls the Person constructor to initialize the inherited data members.

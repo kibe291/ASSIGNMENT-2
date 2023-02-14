@@ -1,0 +1,40 @@
+(i) Inheritance is a key concept in object-oriented programming that allows a class to inherit properties and behaviors from another class, known as the superclass or parent class. In the scenario described, inheritance can be used to create a hierarchy of classes that represent the different courses and stages of study. For example, a superclass could be created for all courses, with subclasses for ICT, Law, and Business. The ICT subclass could then have subclasses for Certificate, Diploma, and BSC-IT, and the BSC-IT subclass could have subclasses for Stage 1, Stage 2, and Stage 3. Each subclass can inherit the properties and methods of its parent class, while also adding its own unique properties and methods.
+
+(ii) To develop a program in C++ that implements the design using inheritance, you would need to write code that defines each class and its properties and methods.
+
+
+
+
+class Course {
+public:
+  string courseName;
+  int numStudents;
+  virtual void printDetails() {
+    cout << "Course name: " << courseName << endl;
+    cout << "Number of students: " << numStudents << endl;
+  }
+};
+
+class ICT : public Course {
+public:
+  string ictType;
+  virtual void printDetails() {
+    Course::printDetails();
+    cout << "ICT type: " << ictType << endl;
+  }
+};
+
+class BSC_IT : public ICT {
+public:
+  int stage;
+  virtual void printDetails() {
+    ICT::printDetails();
+    cout << "Stage: " << stage << endl;
+  }
+};
+
+
+
+
+
+In this example, the Course class is the superclass, with properties for the course name and number of students. The ICT subclass inherits these properties, but also adds a property for the type of ICT course. The BSC_IT subclass then inherits properties from both Course and ICT, and adds a property for the stage of study. Each class also has a virtual function for printing the details of the object, which can be overridden by subclasses to add their own details.

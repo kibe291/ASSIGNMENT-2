@@ -1,0 +1,61 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Computer {
+public:
+    Computer(string brand, string model, float price) : brand(brand), model(model), price(price) {}
+
+    void turn_on() {
+        cout << "Turning on computer..." << endl;
+    }
+
+protected:
+    string brand;
+    string model;
+    float price;
+};
+
+class Client : public Computer {
+public:
+    Client(string brand, string model, float price, string color) : Computer(brand, model, price), color(color) {}
+
+    void browse_internet() {
+        cout << "Browsing the internet..." << endl;
+    }
+
+private:
+    string color;
+};
+
+class Server : public Computer {
+public:
+    Server(string brand, string model, float price, int num_of_users) : Computer(brand, model, price), num_of_users(num_of_users) {}
+
+    void run_server() {
+        cout << "Running server for " << num_of_users << " users..." << endl;
+    }
+
+private:
+    int num_of_users;
+};
+
+int main() {
+    Client my_laptop("Hp", "Elite", 2013.0, "silver");
+    my_laptop.turn_on();
+    my_laptop.browse_internet();
+    cout << "Brand: " << my_laptop.brand << ", Model: " << my_laptop.model << ", Price: " << my_laptop.price << ", Color: " << my_laptop.color << endl;
+
+    Server my_server("Dell", "PowerEdge", 3999.0, 100);
+    my_server.turn_on();
+    my_server.run_server();
+    cout << "Brand: " << my_server.brand << ", Model: " << my_server.model << ", Price: " << my_server.price << ", Number of users: " << my_server.num_of_users << endl;
+
+    return 0;
+}
+
+
+
+
+In this implementation, we define three classes: Computer, Client, and Server. Client and Server inherit from Computer using the public keyword. This means that the public members of Computer become public members of Client and Server. We define the constructors for each class, which call the constructor of the base class using the Computer(brand, model, price) syntax. We also define additional private and public members for Client and Server, and additional functions for each class. Finally, in the main function, we create objects of type Client and Server, and call their member functions.
